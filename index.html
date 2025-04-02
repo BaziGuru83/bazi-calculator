@@ -67,23 +67,21 @@
     <div class="result" id="result"></div>
   </div>
 
-  <script type="module">
-    import { BaziCalculator } from 'https://cdn.jsdelivr.net/gh/tommitoan/bazica@latest/dist/index.js';
-
-    window.calculate = () => {
+  <script src="https://cdn.jsdelivr.net/gh/baziguru/bazica-standalone@latest/bazica.min.js"></script>
+  <script>
+    function calculate() {
       const date = document.getElementById("date").value;
-
       if (!date) {
         alert("Пожалуйста, укажите дату рождения.");
         return;
       }
 
       const fullDate = new Date(`${date}T00:00:00`);
-      const bazi = BaziCalculator.calculate(fullDate, 0);
+      const bazi = window.BaziCalculator.calculate(fullDate, 0); // UTC 0
 
       const resultText = `Ваш Столп Дня: <b>${bazi.day.heavenlyStem} ${bazi.day.earthlyBranch}</b>`;
       document.getElementById("result").innerHTML = resultText;
-    };
+    }
   </script>
 </body>
 </html>
